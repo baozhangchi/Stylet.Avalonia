@@ -85,7 +85,7 @@ namespace Stylet
         /// <summary>
         /// Launch the root view
         /// </summary>
-        protected abstract Control DisplayRootView();
+        protected abstract Control? DisplayRootView();
 
 
         /// <summary>
