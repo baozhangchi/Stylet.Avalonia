@@ -21,8 +21,20 @@
     <ItemGroup>
         <ProjectReference Include="..\Stylet.Avalonia\Stylet.Avalonia.csproj"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="StyletCodeGenerator.Extensions.cs">
+        <DependentUpon>StyletCodeGenerator.cs</DependentUpon>
+      </Compile>
+      <Compile Update="StyletCodeGenerator.StyletCodeGenerator.BaseTypes.cs">
+        <DependentUpon>StyletCodeGenerator.cs</DependentUpon>
+      </Compile>
+      <Compile Update="StyletCodeGenerator.BaseTypes.cs">
+        <DependentUpon>StyletCodeGenerator.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
     <Target Name="GetDependencyTargetPaths">
-        <Message Text="$(PKGAvalonia)\lib\netstandard2.0\Avalonia.dll" Importance="high"/>
+<!--        <Message Text="$(PKGAvalonia)\lib\netstandard2.0\Avalonia.dll" Importance="high"/>-->
         <ItemGroup>
             <TargetPathWithTargetPlatformMoniker Include="$(TargetDir)\Stylet.Avalonia.dll" IncludeRuntimeDependency="false"/>
             <TargetPathWithTargetPlatformMoniker Include="$(PkgAvalonia)\lib\netstandard2.0\Avalonia.dll" IncludeRuntimeDependency="false"/>
