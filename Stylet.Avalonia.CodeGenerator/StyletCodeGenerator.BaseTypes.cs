@@ -6,7 +6,7 @@ namespace Stylet.Avalonia.CodeGenerator;
 
 public partial class StyletCodeGenerator
 {
-    private static void RegisterBaseTypes(IncrementalGeneratorInitializationContext context)
+    private static void RegisterBaseTypesGenerator(IncrementalGeneratorInitializationContext context)
     {
         context.RegisterImplementationSourceOutput(
             context.CompilationProvider,

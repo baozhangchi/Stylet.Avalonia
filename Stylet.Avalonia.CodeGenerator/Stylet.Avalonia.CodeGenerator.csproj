@@ -32,6 +32,9 @@
       <Compile Update="StyletCodeGenerator.BaseTypes.cs">
         <DependentUpon>StyletCodeGenerator.cs</DependentUpon>
       </Compile>
+      <Compile Update="StyletCodeGenerator.ViewModels.cs">
+        <DependentUpon>StyletCodeGenerator.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
     <Target Name="GetDependencyTargetPaths">
 <!--        <Message Text="$(PKGAvalonia)\lib\netstandard2.0\Avalonia.dll" Importance="high"/>-->
