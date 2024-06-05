@@ -9,6 +9,19 @@ public partial class StyletCodeGenerator
     private static void RegisterBaseTypesGenerator(IncrementalGeneratorInitializationContext context)
     {
         context.RegisterImplementationSourceOutput(
+            context.AnalyzerConfigOptionsProvider.Combine(context.CompilationProvider),
+            (sourceProductionContext, combine) =>
+            {
+                var analyzerConfigOptions = combine.Left;
+                var compilation = combine.Right;
+                var baseNamespace = compilation.AssemblyName!;
+                if (analyzerConfigOptions.GlobalOptions.TryGetValue("build_property.rootnamespace", out var ns))
+                    baseNamespace = ns;
+
+                GenerateIoc(sourceProductionContext, baseNamespace);
+                GenerateViewModelBase(sourceProductionContext, baseNamespace);
+            });
+        context.RegisterImplementationSourceOutput(
             context.CompilationProvider,
             (sourceProductionContext, compilation) =>
             {
@@ -22,9 +35,7 @@ public partial class StyletCodeGenerator
                         if (declaredSymbol != null)
                         {
                             var baseNamespace = declaredSymbol.ContainingNamespace.ToString()!;
-                            GenerateIoc(sourceProductionContext, baseNamespace);
                             GenerateStyletApplication(sourceProductionContext, baseNamespace);
-                            GenerateViewModelBase(sourceProductionContext, baseNamespace);
                             return;
                         }
                     }
